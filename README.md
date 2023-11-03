@@ -1,4 +1,4 @@
-# gps_tracker
+# FideMyBike
 
 A new Flutter project.
 

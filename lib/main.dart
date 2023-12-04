@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gps_tracker/Authentication/login_screen.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:gps_tracker/Observer/NotificationsObservable.dart';
 import 'package:gps_tracker/gpstracker.dart';
 import 'package:gps_tracker/statedetect.dart';
 import 'package:workmanager/workmanager.dart';
@@ -18,9 +19,15 @@ void callbackDispacher() {
   });
 }
 
+NotificationsObservable Notifications = NotificationsObservable();
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Workmanager().initialize(callbackDispacher);
+  flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.requestNotificationsPermission();
   runApp(const MyApp());
 }
 

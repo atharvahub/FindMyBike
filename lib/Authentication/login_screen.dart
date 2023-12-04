@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_login/theme.dart';
 import 'package:flutter_login/flutter_login.dart';
 import 'package:gps_tracker/gpstracker.dart';
 
@@ -10,14 +9,11 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-const users = {
-  'sohamsakaria@gmail.com': '12345',
-};
+const users = {'admin@gmail.com': '12345'};
 
 class _LoginScreenState extends State<LoginScreen> {
   Duration get loginTime => const Duration(milliseconds: 1500);
 
-  @override
   Future<String?> _authUser(LoginData data) {
     debugPrint('Name: ${data.name}, Password: ${data.password}');
     return Future.delayed(loginTime).then((_) {
@@ -50,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget build(BuildContext context) {
     return FlutterLogin(
-      title: "TrackMyCycle\n",
+      title: "TrackMyBike\n",
       additionalSignupFields: [
         const UserFormField(
           keyName: 'Username',
@@ -83,17 +79,17 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       onRecoverPassword: _recoverPassword,
       theme: LoginTheme(
-          primaryColor: Colors.blueAccent,
-          accentColor: Colors.cyan,
-          errorColor: Colors.red,
+          primaryColor: const Color.fromRGBO(58, 66, 86, 1.0),
+          accentColor: const Color.fromRGBO(64, 75, 96, .9),
+          errorColor: const Color.fromRGBO(64, 75, 96, .9),
           titleStyle: const TextStyle(
               color: Colors.white,
               letterSpacing: 4,
               fontWeight: FontWeight.bold),
           bodyStyle: const TextStyle(fontStyle: FontStyle.italic),
           buttonTheme: const LoginButtonTheme(
-              splashColor: Colors.blueAccent,
-              backgroundColor: Colors.blue,
+              splashColor: Colors.transparent,
+              backgroundColor: Color.fromRGBO(64, 75, 96, 1),
               elevation: 9,
               highlightElevation: 6)),
     );
